@@ -1,0 +1,82 @@
+body {
+  overflow: hidden;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  line-height: 1.3em;
+  padding-top: 20px;
+  color: #000;
+  background: #000 url("/assets/images/bg.gif") repeat; }
+  body .panel {
+    position: relative;
+    border: 3px solid #4b66ff;
+    padding: 0;
+    float: left;
+    background-color: #000;
+    color: #4b66ff;
+    margin: 5px; }
+    body .panel .panel-heading {
+      background-color: #000;
+      color: #f0f001;
+      border-color: #4b66ff;
+      font-size: 16px; }
+    body .panel .panel-body {
+      padding: 0;
+      height: 600px; }
+      body .panel .panel-body h3 {
+        font-size: 12px;
+        color: #FFF; }
+      body .panel .panel-body .me {
+        color: #f0f001; }
+      body .panel .panel-body .server {
+        color: #e06c75; }
+  body #panel-leaderboard {
+    width: 250px; }
+    body #panel-leaderboard #users th {
+      color: #FFF;
+      line-height: 3em;
+      font-size: 14px; }
+    body #panel-leaderboard #users td {
+      line-height: 2em; }
+      body #panel-leaderboard #users td.name {
+        width: 70%;
+        overflow-x: scroll; }
+      body #panel-leaderboard #users td.score {
+        width: 30%;
+        text-align: center; }
+    body #panel-leaderboard .panel-body {
+      padding: 15px; }
+  body #panel-game .panel-body {
+    width: 600px; }
+  body #panel-chat {
+    width: 250px; }
+    body #panel-chat #messages {
+      padding: 15px;
+      line-height: 1.5em;
+      height: 550px;
+      overflow-y: scroll; }
+      body #panel-chat #messages span {
+        display: block;
+        margin-bottom: 7px; }
+        body #panel-chat #messages span b {
+          font-size: 11px;
+          opacity: 0.6; }
+    body #panel-chat #bloc-input {
+      position: absolute;
+      bottom: 10px; }
+      body #panel-chat #bloc-input #data {
+        border-radius: 5px;
+        color: #FFF;
+        background-color: #4b66ff;
+        border-color: #f0f001;
+        padding: 7px;
+        outline: none;
+        width: 130px; }
+      body #panel-chat #bloc-input #datasend {
+        color: #FFF;
+        background-color: #4b66ff;
+        border-color: #f0f001;
+        padding: 10px 7px; }
+        body #panel-chat #bloc-input #datasend:hover {
+          transform: scale(1.1); }
+
+/*# sourceMappingURL=main.css.map */

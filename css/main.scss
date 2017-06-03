@@ -1,0 +1,132 @@
+//$color1 : #292d35;
+$color1 : #000;
+$color2 : #4b66ff;
+$color3 : #f0f001;
+
+body {
+  overflow: hidden;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  line-height: 1.3em;
+  padding-top: 20px;
+  color: $color1;
+  background: #000 url("/assets/images/bg.gif") repeat;
+
+  .panel {
+    position: relative;
+    border: 3px solid $color2;
+    padding: 0;
+    float: left;
+    background-color: $color1;
+    color: $color2;
+    margin: 5px;
+
+    .panel-heading {
+      background-color: $color1;
+      color: $color3;
+      border-color: $color2;
+      font-size: 16px;
+    }
+
+    .panel-body {
+      padding: 0;
+      height: 600px;
+
+      h3 {
+        font-size: 12px;
+        color: #FFF;
+      }
+
+      .me {
+        color: $color3;
+      }
+
+      .server {
+        color: rgb(224, 108, 117);
+      }
+    }
+  }
+
+  #panel-leaderboard {
+    width: 250px;
+
+    #users {
+      th {
+        color: #FFF;
+        line-height: 3em;
+        font-size: 14px;
+      }
+
+      td {
+        line-height: 2em;
+
+        &.name {
+          width: 70%;
+          overflow-x: scroll;
+        }
+
+        &.score {
+          width: 30%;
+          text-align: center;
+        }
+      }
+    }
+
+    .panel-body {
+      padding: 15px;
+    }
+  }
+
+  #panel-game {
+    .panel-body {
+      width: 600px;
+    }
+  }
+
+  #panel-chat {
+    width: 250px;
+
+    #messages {
+      padding: 15px;
+      line-height: 1.5em;
+      height: 550px;
+      overflow-y: scroll;
+
+      span {
+        display: block;
+        margin-bottom: 7px;
+
+        b {
+          font-size: 11px;
+          opacity: 0.6;
+        }
+      }
+    }
+
+    #bloc-input {
+      position: absolute;
+      bottom: 10px;
+
+      #data {
+        border-radius: 5px;
+        color: #FFF;
+        background-color: $color2;
+        border-color: $color3;
+        padding: 7px;
+        outline: none;
+        width: 130px;
+      }
+
+      #datasend {
+        color: #FFF;
+        background-color: $color2;
+        border-color: $color3;
+        padding: 10px 7px;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}

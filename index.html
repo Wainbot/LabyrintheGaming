@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Labyrinthe Gaming</title>
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+    <link href="//fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href=css/main.css rel="stylesheet">
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/models/Candy.js"></script>
+    <script src="js/models/Labyrinthe.js"></script>
+    <script src="js/models/Player.js"></script>
+    <script src="js/tools.js"></script>
+    <script src="js/socket.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="panel-leaderboard" class="panel panel-default">
+            <div class="panel-heading text-center">Leaderboard</div>
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <table width="100%" id="users"></table>
+                </div>
+            </div>
+        </div>
+        <div id="panel-game" class="panel panel-default">
+            <div class="panel-heading text-center">Game</div>
+            <div class="panel-body">
+                <canvas id="mon_canvas">
+                    Votre navigateur n'est pas compatible avec ce jeu !
+                </canvas>
+            </div>
+        </div>
+        <div id="panel-chat" class="panel panel-default">
+            <div class="panel-heading text-center">Chat</div>
+            <div class="panel-body">
+                <div class="col-md-12" id="messages"></div>
+                <div class="col-md-12" id="bloc-input">
+                    <label for="data"></label>
+                    <input id="data" type="text" placeholder="message..."/>
+                    <input type="button" id="datasend" value="Send" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <audio id="chat_audio" preload="auto" hidden>
+        <source src="/assets/sounds/chat.mp3" type="audio/mpeg" />
+        <embed src="/assets/sounds/chat.mp3" autostart="false" loop="false"></embed>
+    </audio>
+    <audio id="win_audio" preload="auto" hidden>
+        <source src="/assets/sounds/win.mp3" type="audio/mpeg" />
+        <embed src="/assets/sounds/win.mp3" autostart="false" loop="false"></embed>
+    </audio>
+</body>
+</html>
