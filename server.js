@@ -37,7 +37,6 @@ var gameStarted   = false;
 var labNbCases    = 30;
 var labTailleCase = 600 / labNbCases;
     labTailleCase -= labTailleCase / labNbCases;
-var itv;
 
 io.sockets.on('connection', function (socket) {
     // when the client emits 'sendchat', this listens and executes
@@ -74,7 +73,22 @@ io.sockets.on('connection', function (socket) {
 
         if (Object.keys(players).length > 1) {
             if (!gameStarted) {
-                startGame();
+                var waitingStart = 10;
+                var intervalWaiting = setInterval(function() {
+                    io.sockets.emit("waitingStartTimer", waitingStart);
+
+                    if (waitingStart <= 0) {
+                        deleteInterval();
+                        startGame();
+                    }
+
+                    waitingStart--;
+                }, 1000);
+
+                function deleteInterval() {
+                    clearInterval(intervalWaiting);
+                    delete intervalWaiting;
+                }
             } else {
                 socket.emit('startgame', labyrinthe.lamap, labNbCases, labTailleCase, candy);
                 socket.emit('updatechat', 'SERVER', 'Game in progress, wait to play.');
@@ -98,7 +112,6 @@ io.sockets.on('connection', function (socket) {
         socket.broadcast.emit('updatechat', 'SERVER', socket.username + ' win !');
 
         if (gameStarted == true) {
-            console.log("incr score !");
             // on incrémente le score
             players[name_].score++;
         }
@@ -125,7 +138,22 @@ io.sockets.on('connection', function (socket) {
         io.sockets.emit('endgame', name_);
         io.sockets.emit('updateplayers', players);
 
-        startGame();
+        var waitingStart = 10;
+        var intervalWaiting = setInterval(function() {
+            io.sockets.emit("waitingStartTimer", waitingStart);
+
+            if (waitingStart <= 0) {
+                deleteInterval();
+                startGame();
+            }
+
+            waitingStart--;
+        }, 1000);
+
+        function deleteInterval() {
+            clearInterval(intervalWaiting);
+            delete intervalWaiting;
+        }
     });
 
     socket.on('playereatcandy', function(candy_) {
@@ -147,7 +175,7 @@ io.sockets.on('connection', function (socket) {
             labyrinthe  = false;
             gameStarted = false;
             for (var p in players) {
-                players[p] = { score: players[p].score, name: players[p].name, x: labTailleCase, y: labTailleCase, countPas: 0, direction: 0, canPlay: false, size: labTailleCase};
+                players[p] = { score: players[p].score, name: players[p].name, x: labTailleCase, y: labTailleCase, countPas: 0, direction: 0, canPlay: false, size: labTailleCase, sprite: players[p].sprite };
             }
             socket.broadcast.emit('waitingplayer');
         } else {
@@ -157,8 +185,15 @@ io.sockets.on('connection', function (socket) {
                     countPlay++;
                 }
             }
-            if (countPlay < 2) {
+            if (countPlay > 1) {
                 startGame();
+            } else {
+                labyrinthe  = false;
+                gameStarted = false;
+                for (var p in players) {
+                    players[p] = { score: players[p].score, name: players[p].name, x: labTailleCase, y: labTailleCase, countPas: 0, direction: 0, canPlay: false, size: labTailleCase, sprite: players[p].sprite};
+                }
+                socket.broadcast.emit('waitingplayer');
             }
         }
 

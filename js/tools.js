@@ -102,24 +102,38 @@ function audioWin() {
     winAudio.play();
 };
 
-function startFreez() {
-    console.log("start freez");
-    var nbItv  = 50;
-    var rotate = 0;
+function audioEffect() {
+    effectAudio.currentTime = 0;
+    effectAudio.play();
+};
+
+function startWizz() {
+    var nbItv  = 300;
+    var delta  = 10;
     var el     = document.getElementById("mon_canvas");
-    var itv    = setInterval(function() {
-        if (rotate == 360) {
-            rotate = 0;
-        } else {
-            rotate += 36;
-        }
+    el.className = "effect-wizz";
+    setInterval(function() {
+        el.className = "";
+    }, 3000);
+};
 
-        if (nbItv == 0) {
-            rotate = 0;
-            clearInterval(itv);
-        }
+function startBlur() {
+    var el = document.getElementById("mon_canvas");
+    el.style.filter = "blur(15px)";
+    setInterval(function() {
+        el.style.filter = "none";
+    }, 3000);
+};
 
-        el.style.transform = "rotate(" + rotate + "deg)";
-        nbItv--;
-    }, 100);
+function startOpacity() {
+    var el = document.getElementById("mon_canvas");
+    el.style.opacity = "0.2";
+    setInterval(function() {
+        el.style.opacity = "1";
+    }, 3000);
+};
+
+// From EDX
+function calcDistanceToMove(delta, speed) {
+    return (speed * delta) / 1000;
 };

@@ -1,5 +1,5 @@
-//var username = prompt("What's your name?");
 var username = "user";
+username = prompt("What's your name?") || username;
 var messages, data, datasend, users, socket;
 
 // on load of page
@@ -72,6 +72,7 @@ window.addEventListener("load", function () {
 
     socket.on('startgame', function(map, nbCases, tailleCases, candy_) {
         console.log('startgame', map, nbCases, tailleCases, candy_);
+        timeForPlay   = 10;
         labTailleCases   = tailleCases;
         labyrinthe       = new Labyrinthe(nbCases, labTailleCases);
         labyrinthe.setMap(map);
@@ -115,8 +116,24 @@ window.addEventListener("load", function () {
     socket.on('candyeffect', function(effect) {
         console.log("candyeffect", effect);
         if (player.canPlay) {
-            startFreez();
+            audioEffect();
+            switch(effect) {
+                case 1:
+                    startWizz();
+                    break;
+                case 2:
+                    startBlur();
+                    break;
+                case 3:
+                    startOpacity();
+                    break;
+            }
         }
+    });
+
+    socket.on('waitingStartTimer', function(time) {
+        console.log("time waiting start: ", time);
+        timeForPlay = time;
     });
 
     function sendMessage() {

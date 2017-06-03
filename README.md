@@ -20,3 +20,13 @@ $ npm start
 ## How to play
 
 Open http://localhost:8082 in two (or more) different windows and play.
+
+## Features
+
+- Multiplayers
+- Collisions
+- Retro-gaming design
+- Time-based animation
+- Chat
+- Leaderboard
+- Audio effect

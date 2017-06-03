@@ -9,6 +9,7 @@ function Player(name_, x_, y_, size_, sprite_) {
     this.x                    = x_;
     this.y                    = y_;
     this.size                 = size_;
+    this.speed                = 100;
     this.dx                   = 2;
     this.dy                   = 2;
     this.direction            = 'DOWN';
@@ -21,7 +22,11 @@ function Player(name_, x_, y_, size_, sprite_) {
     var spritesheet           = new Image();
     spritesheet.src           = SPRITESHEET_URL;
 
-    this.move = function() {
+    this.move = function(delta) {
+        // time-base animation
+        this.dx = calcDistanceToMove(delta, this.speed);
+        this.dy = calcDistanceToMove(delta, this.speed);
+
         // si le joueur gagne
         if (checkIfWin()) {
             socket.emit('playerwin', username);
