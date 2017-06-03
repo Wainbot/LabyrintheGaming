@@ -1,9 +1,9 @@
 # Labyrinthe Gaming (Web 2.0)
 
 
-## Contributors
+## Contributor
 
-- Froment Jérémy
+- Jérémy Froment
 
 ## How to install
 
