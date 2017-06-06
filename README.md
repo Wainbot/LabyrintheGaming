@@ -30,3 +30,11 @@ Open http://localhost:8082 in two (or more) different windows and play.
 - Chat
 - Leaderboard
 - Audio effect
+
+## Gameplay
+
+Chat and play with friends in labyrinthe ! 
+
+To win, you have to be the first escaping the labyrinthe.
+
+Be careful, other players can set you a trap ! 
